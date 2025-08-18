@@ -102,22 +102,24 @@
   .card span { font-weight: 600; letter-spacing: .2px; }
   .card small { color: var(--muted); display: block; font-weight: 500; }
 
-  /* Neon border glow on hover only */
-  .card::before {
-    content: ""; position: absolute; inset: 0; border-radius: inherit;
-    border: 2px solid transparent;
-    background: linear-gradient(135deg, var(--neon-1), var(--neon-2), var(--neon-3));
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity .25s ease;
-    pointer-events: none;
-  }
+  /* Neon border glow on hover only - stronger */
+.card::before {
+  content: "";
+  position: absolute; inset: 0; border-radius: inherit;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, var(--neon-1), var(--neon-2), var(--neon-3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .25s ease, box-shadow .25s ease;
+  pointer-events: none;
+  box-shadow: 0 0 15px var(--neon-1), 0 0 25px var(--neon-2), 0 0 35px var(--neon-3);
+}
 
-  .card:hover::before { opacity: 1; }
+.card:hover::before {
+  opacity: 1;
+}
 
   footer { text-align: center; color: var(--muted); font-size: .95rem; margin-top: 30px; }
   footer a { color: var(--text); opacity: .9; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,.25); }
@@ -141,22 +143,20 @@
   <h2 id="links" class="sr-only">Social Links</h2>
   <div class="grid">
     <!-- Discord -->
-    <a class="card" href="https://discord.gg/QWK3mnYbJx" target="_blank" rel="noopener" aria-label="Discord">
-      <div>
-        <span style="color: #ff2bd6; font-weight: 700; text-shadow: 0 0 6px #ff2bd6, 0 0 12px #ff2bd6;">DISCORD</span>
-        <small>Join the server</small>
-      </div>
-    </a>
-
-    <!-- TikTok -->
-    <a class="card" href="https://www.tiktok.com/@trixqu2" target="_blank" rel="noopener" aria-label="TikTok">
-      <div>
-        <span style="color: #ff5cff; font-weight: 700; text-shadow: 0 0 6px #ff5cff, 0 0 12px #ff5cff;">TIKTOK</span>
-        <small>@trixqu2</small>
-      </div>
-    </a>
+<a class="card" href="https://discord.gg/QWK3mnYbJx" target="_blank" rel="noopener" aria-label="Discord">
+  <div>
+    <span style="color: #ff2bd6; font-weight: 700; text-shadow: 0 0 2px #ff2bd6, 0 0 4px #ff2bd6;">DISCORD</span>
+    <small>Join the server</small>
   </div>
-</section>
+</a>
+
+<!-- TikTok -->
+<a class="card" href="https://www.tiktok.com/@trixqu2" target="_blank" rel="noopener" aria-label="TikTok">
+  <div>
+    <span style="color: #ff5cff; font-weight: 700; text-shadow: 0 0 2px #ff5cff, 0 0 4px #ff5cff;">TIKTOK</span>
+    <small>@trixqu2</small>
+  </div>
+</a>
 
     <footer>
       <p>© <span id="year"></span> Trix. Built with ❤ and prayers
